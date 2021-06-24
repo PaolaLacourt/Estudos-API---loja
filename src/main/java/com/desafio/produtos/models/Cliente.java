@@ -1,0 +1,49 @@
+package com.desafio.produtos.models;
+
+
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import lombok.Data;
+
+@Data
+@Entity
+public class Cliente {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@NotNull
+	@NotEmpty
+	private String cpf;
+	
+	@NotNull
+	@NotEmpty
+	private String nome;
+	
+	@NotNull
+	@NotEmpty
+	private String telefone;
+	
+	@NotNull
+	@NotEmpty
+	private String email;
+
+	@Embedded
+	private Endereco endereco;
+	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+            
+
+}
